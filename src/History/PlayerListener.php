@@ -26,6 +26,7 @@ use pocketmine\Server;
 class PlayerListener implements Listener {
 
     public function onJoin(PlayerJoinEvent $event): void {
+        #People with rank Normal
         $player = $event->getPlayer();
         $name = $player->getName();
         $event->setJoinMessage(A::GRAY . "[" . A::GREEN . "+" . A::GRAY . "]" . A::AQUA . " $name");
