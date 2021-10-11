@@ -48,7 +48,7 @@ class GulagCommand extends Command {
             unset($exploded[1]);
             $reason = implode(" ", $exploded);
 
-            History::addBan($this->plugin->getServer()->getPlayer($args[0])->getName(), $reason, $sender->getName(), History::getFormatTime(History::stringToInt($args[1]), $args[1]));
+            //History::addBan($this->plugin->getServer()->getPlayer($args[0])->getName(), $reason, $sender->getName(), History::getFormatTime(History::stringToInt($args[1]), $args[1]));
         }
         if($this->plugin->getServer()->getPlayer($args[0]) === null) {
             $sender->sendMessage(A::RED."Player no found!");

@@ -30,6 +30,7 @@ class PlayerListener implements Listener {
         $name = $player->getName();
         $event->setJoinMessage(A::GRAY . "[" . A::GREEN . "+" . A::GRAY . "]" . A::AQUA . " $name");
 
+        #Only People with OP
         if($player->isOp()) {
             $player->sendMessage(A::DARK_PURPLE."Welcome Admin");
             $vanish = new Vanish();
