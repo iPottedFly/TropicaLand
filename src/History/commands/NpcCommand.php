@@ -21,7 +21,8 @@ class NpcCommand extends Command {
             $sender->sendMessage(A::RED."¡ Error !");
             return;
         }
- 
+
+        #this is fase beta (Don't have functions)
         $nbt = Entity::createBaseNBT($sender, null, $sender->getYaw(), $sender->getPitch());
         $entity = Entity::createEntity("Creeper", $sender->getLevel(), $nbt);
         $entity->spawnToAll();
