@@ -1,0 +1,23 @@
+name: Notification on push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_USERNAME: iPottedFly
+          DISCORD_AVATAR: https://yt3.ggpht.com/ytc/AAUvwni27meBIu7EhFjRpTUxMnPNVSrh9tr6cC6-QeOaQw=s900-c-k-c0x00ffffff-no-rj
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "All changes are register by iPottedFly"
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
