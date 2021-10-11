@@ -14,7 +14,7 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_USERNAME: iPottedFly
-          DISCORD_AVATAR: https://i.pinimg.com/200x150/46/64/12/466412f9e8e7094de074501258358160.jpg
+          DISCORD_AVATAR: 
         uses: Ilshidur/action-discord@master
         with:
           args: "Nueva update!"
