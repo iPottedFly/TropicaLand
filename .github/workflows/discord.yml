@@ -13,11 +13,11 @@ jobs:
       - name: Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: iPottedFly
-          DISCORD_AVATAR: 
+          DISCORD_USERNAME: GitHub
+          DISCORD_AVATAR: https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU
         uses: Ilshidur/action-discord@master
         with:
-          args: "Nueva update!"
+          args: "New Update"
       - name: Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
