@@ -1,3 +1,4 @@
+#Only for Webhooks
 name: Notification on push
 
 on:
