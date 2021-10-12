@@ -7,7 +7,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as A;
 
-use History\commands\{GiveCmd, NpcCommand};
+use History\commands\{GiveCmd, GulagCommand, NpcCommand};
 use History\npc\NpcDialog;
 
 class History extends PluginBase {
@@ -15,13 +15,14 @@ class History extends PluginBase {
     const HISTORY = A::BOLD.A::GREEN."Tropica".A::AQUA."Land".A::RESET;
     const PREFIX = A::BOLD.A::DARK_GRAY."[".A::RED."Alert".A::DARK_GRAY."]".A::RESET;
 
-    protected static $logger = null, $data = null, $provider = null, $mysql = null;
+    protected static $logger = null, $data = null;
 
     public function onEnable() {
         $this->getLogger()->info(self::HISTORY. A::AQUA." fue cargado correctamente!");
         $this->getServer()->getPluginManager()->registerEvents(new PlayerListener(), $this);
         NpcDialog::register($this);
         $this->registerCommand(new GiveCmd);
+        $this->registerCommand(new GulagCommand($this));
         $this->registerCommand(new NpcCommand);
     }
 

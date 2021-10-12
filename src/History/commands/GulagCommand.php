@@ -2,13 +2,9 @@
 
 namespace History\commands;
 
-use AdvancedBan\Loader;
-use History\Banned\Data;
-use History\Banned\Time;
 use History\History;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\entity\Entity;
 use pocketmine\level\Location;
 use pocketmine\Player;
 use pocketmine\Server;
