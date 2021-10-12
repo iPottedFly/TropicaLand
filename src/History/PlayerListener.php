@@ -132,7 +132,7 @@ class PlayerListener implements Listener {
             $player->addEffect(new EffectInstance(Effect::getEffect(Effect::JUMP_BOOST), 160, 2));
             $player->addEffect(new EffectInstance(Effect::getEffect(Effect::INVISIBILITY), 160, 1));
             $player->getInventory()->getItemInHand()->setCustomName(A::GRAY . "Sin habilidad!");
-            $item->setCount($item->getCount() - 1);
+            $item->setCount($item->getCount() -1);
         }
         if ($item->getId() === 106 && $item->hasCustomName() && $item->getCustomName() === A::BOLD . A::GREEN . "Vanish") {
             if($player->hasPermission("vanish.use")) {
