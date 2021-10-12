@@ -13,7 +13,7 @@ use History\npc\NpcDialog;
 class History extends PluginBase {
 
     const HISTORY = A::BOLD.A::GREEN."Tropica".A::AQUA."Land".A::RESET;
-    const VALID_FORMATS = ["minutes", "hours", "seconds", "days"];
+    const PREFIX = A::BOLD.A::DARK_GRAY."[".A::RED."Alert".A::DARK_GRAY."]".A::RESET;
 
     protected static $logger = null, $data = null, $provider = null, $mysql = null;
 
