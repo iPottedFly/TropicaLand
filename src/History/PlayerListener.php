@@ -2,6 +2,8 @@
 
 namespace History;
 
+use History\Banned\Data;
+use History\Banned\Time;
 use History\Items\admin\Vanish;
 use pocketmine\event\player\{PlayerJoinEvent,
     PlayerQuitEvent,
@@ -39,15 +41,15 @@ class PlayerListener implements Listener {
         }
     }
 
-    public function onQuit(PlayerQuitEvent $event): void
-    {
+    public function onQuit(PlayerQuitEvent $event): void {
         $player = $event->getPlayer();
         $name = $player->getName();
 
         $player->getLevel()->addParticle(new HeartParticle($player->asVector3()->add(0, 1.6, 0)), $player->getLevel()->getPlayers());
         $event->setQuitMessage(A::GRAY . "[" . A::RED . "-" . A::GRAY . "]" . A::AQUA . " $name");
         if($player->getLevel() === "gulag") {
-
+            Data::addBan($name, "Disconnect in gulag", A::RED."Automatic Bot", false,"600");
+            Server::getInstance()->broadcastMessage()
         }
     }
 
