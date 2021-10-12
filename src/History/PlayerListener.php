@@ -48,8 +48,8 @@ class PlayerListener implements Listener {
         $player->getLevel()->addParticle(new HeartParticle($player->asVector3()->add(0, 1.6, 0)), $player->getLevel()->getPlayers());
         $event->setQuitMessage(A::GRAY . "[" . A::RED . "-" . A::GRAY . "]" . A::AQUA . " $name");
         if($player->getLevel() === "gulag") {
-            Data::addBan($name, "Disconnect in gulag", A::RED."Automatic Bot", false,"600");
-            Server::getInstance()->broadcastMessage()
+            Data::addBan($name, "Disconnect in gulag", A::RED."Automatic Bot", false,"5m");
+            Server::getInstance()->broadcastMessage(History::PREFIX.A::RESET.A::RED.$name.A::WHITE."Are banned for logout in gulag");
         }
     }
 
