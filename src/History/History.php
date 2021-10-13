@@ -3,6 +3,7 @@
 namespace History;
 
 use AdvancedBan\Loader;
+use History\events\Elevator;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as A;
@@ -20,6 +21,7 @@ class History extends PluginBase {
     public function onEnable() {
         $this->getLogger()->info(self::HISTORY. A::AQUA." fue cargado correctamente!");
         $this->getServer()->getPluginManager()->registerEvents(new PlayerListener(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new Elevator(), $this);
         NpcDialog::register($this);
         $this->registerCommand(new GiveCmd);
         $this->registerCommand(new GulagCommand($this));
