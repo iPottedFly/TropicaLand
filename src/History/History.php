@@ -2,13 +2,13 @@
 
 namespace History;
 
+use History\events\ElevatorListener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as A;
 
 use History\commands\{GiveCmd, GulagCommand, NpcCommand};
 use History\npc\NpcDialog;
-use History\events\Elevator;
 
 class History extends PluginBase {
 
@@ -16,35 +16,68 @@ class History extends PluginBase {
     const PREFIX = A::BOLD.A::DARK_GRAY."[".A::RED."Alert".A::DARK_GRAY."]".A::RESET;
 
     protected static $instance;
+    /** @var mixed[] */
     private static $configData;
 
     public static function getSignLine(): int {
         return(int) self::$configData["signs"]["line"];
     }
 
+    public static function getSignUpText(bool $clean = false): string {
+        return self::getSignText("up", $clean);
+    }
+
+    public static function getSignDownText(bool $clean = false): string {
+        return self::getSignText("down", $clean);
+    }
+
     public static function getSignText(string $sign, bool $clean = false): string {
         $text = A::colorize(self::$configData["signs"][$sign]);
-
         if($clean) {
             return A::clean($text);
         }
         return $text;
     }
 
+    public static function getSignCreate(): string {
+        return A::colorize(self::$configData["messages"]["sign-create"]);
+    }
 
+    public static function getUp(): string {
+        return A::colorize(self::$configData["messages"]["teleport-up"]);
+    }
+
+    public static function getDown(): string {
+        return A::colorize(self::$configData["messages"]["teleport-down"]);
+    }
+
+    public static function getNotSafe(): string {
+        return A::colorize(self::$configData["messages"]["no-safe"]);
+    }
+
+    public static function getNotDest(): string {
+        return A::colorize(self::$configData["messages"]["no-destination"]);
+    }
 
     public function onLoad() {
+        @mkdir($this->getDataFolder());
+        self::$configData = $this->getConfig()->getAll();
         self::$instance = $this;
     }
 
     public function onEnable() {
         $this->getLogger()->info(self::HISTORY. A::AQUA." fue cargado correctamente!");
         $this->getServer()->getPluginManager()->registerEvents(new PlayerListener(), $this);
-        $this->getServer()->getPluginManager()->registerEvents(new Elevator(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new ElevatorListener(), $this);
         NpcDialog::register($this);
         $this->registerCommand(new GiveCmd);
         $this->registerCommand(new GulagCommand($this));
         $this->registerCommand(new NpcCommand);
+    }
+
+    public function reloadPlugin(): void {
+        $this->reloadConfig();
+        self::$configData = $this->getConfig()->getAll();
     }
 
     public static function getInstance(): History {
