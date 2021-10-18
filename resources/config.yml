@@ -1,0 +1,13 @@
+#Text configuration
+signs:
+  #Comprobar en que linea escribe
+  line: 0
+  #Texto que será para subir
+  up: "&2[Up]"
+  #Texto que será para bajar
+  down: "&2[Down]"
+
+
+#Mensajes Config
+messages:
+  sign-create: "&8[&4Alert&8]&r &"

@@ -2,21 +2,40 @@
 
 namespace History;
 
-use AdvancedBan\Loader;
-use History\events\Elevator;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as A;
 
 use History\commands\{GiveCmd, GulagCommand, NpcCommand};
 use History\npc\NpcDialog;
+use History\events\Elevator;
 
 class History extends PluginBase {
 
     const HISTORY = A::BOLD.A::GREEN."Tropica".A::AQUA."Land".A::RESET;
     const PREFIX = A::BOLD.A::DARK_GRAY."[".A::RED."Alert".A::DARK_GRAY."]".A::RESET;
 
-    protected static $logger = null, $data = null;
+    protected static $instance;
+    private static $configData;
+
+    public static function getSignLine(): int {
+        return(int) self::$configData["signs"]["line"];
+    }
+
+    public static function getSignText(string $sign, bool $clean = false): string {
+        $text = A::colorize(self::$configData["signs"][$sign]);
+
+        if($clean) {
+            return A::clean($text);
+        }
+        return $text;
+    }
+
+
+
+    public function onLoad() {
+        self::$instance = $this;
+    }
 
     public function onEnable() {
         $this->getLogger()->info(self::HISTORY. A::AQUA." fue cargado correctamente!");
@@ -29,10 +48,7 @@ class History extends PluginBase {
     }
 
     public static function getInstance(): History {
-        if(self::$logger === null) {
-            throw new \RuntimeException("History > Couldn't create instance of variable!");
-        }
-        return self::$logger;
+        return self::$instance;
     }
 
     private function registerCommand($command) {
