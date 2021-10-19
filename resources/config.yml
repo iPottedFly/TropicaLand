@@ -14,4 +14,4 @@ messages:
   teleport-up: "&8[&4Alert&8]&r &7Haz subido!"
   teleport-down: "&8[&4Alert&8]&r &7Haz Bajado!"
   no-safe: "&8[&4Alert&8]&r &7No puedes utilizar el elevador, no es un lugar seguro!"
-  no-destination: "&8[&4Alert&8]&r &7No ha establecido a donde subir/bajar!"
+  no-destination: "&8[&4Alert&8]&r &7No ha establecido donde subir/bajar!"
