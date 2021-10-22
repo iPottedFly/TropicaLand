@@ -65,7 +65,7 @@ class PlayerListener implements Listener {
         if ($player instanceof Player) {
             if ($player->getLastDamageCause() instanceof EntityDamageByEntityEvent) {
                 $cause = $player->getLastDamageCause();
-                $killer = $cause->getDamager();
+                $killer = $cause->getEntity();
                 if($killer instanceof Player) {
                     $killer->sendMessage("");
                 }
