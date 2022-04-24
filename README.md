@@ -1,5 +1,7 @@
 # TropicaLand
-Plugin for PocketMine-MP (Private) Price: $30 USD
+Plugin for PocketMine-MP 3
 
-This plugin is private (I have a buyer) 
-His channel: Franchescool
+This plugin is private but I change it
+And now be public.
+
+• Unupdated Plugin •
